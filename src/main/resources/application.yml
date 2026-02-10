@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: rag
+  thymeleaf:
+    cache: false
+
+vector-db:
+  host: localhost
+  port: 5433
+  database: mydb
+  username: myuser
+  password: mypass
+
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: not-used
+      model-name: ai/llama3.2:1B-Q4_0
+      log-requests: true
+      log-responses: true
+      base-url: http://localhost:12434/v1
+
+    embedding-model:
+      api-key: not-used
+      model-name: ai/embeddinggemma:latest
+      log-requests: false
+      log-responses: false
+      base-url: http://localhost:12434/v1
+

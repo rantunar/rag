@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Send Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #283e51, #4b79a1);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 40px;
+            border-radius: 12px;
+            width: 420px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            resize: vertical;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #00c6ff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #000;
+            cursor: pointer;
+            transition: 0.2s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #00a2d6;
+        }
+
+        .reply-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .reply-label {
+            font-size: 14px;
+            margin-bottom: 6px;
+            display: block;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Bot</h2>
+
+    <div class="reply-box">
+        <span class="reply-label">Reply received:</span>
+        <textarea rows="4" cols="40" th:text="${reply}" readonly></textarea>
+    </div>
+
+    <form th:action="@{/ai/jd/message}" th:object="${messageForm}" method="post">
+        <textarea th:field="*{message}" rows="4" cols="40" placeholder="Type your message..."></textarea>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+</body>
+</html>
